@@ -1,5 +1,5 @@
 study:
-  value: dev-test-value
+  value: test-value-change
 
 test:
   str: test-str
