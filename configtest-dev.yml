@@ -2,4 +2,4 @@ study:
   value: test-value-change
 
 test:
-  str: test-str
+  str: test-str-change
