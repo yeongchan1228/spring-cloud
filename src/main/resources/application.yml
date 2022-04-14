@@ -19,12 +19,14 @@ spring:
           predicates:
             - Path=/first-service/**
           filters:
-            - AddRequestHeader=first-request, first-request-result
-            - AddResponseHeader=first-response, first-response-result
+#            - AddRequestHeader=first-request, first-request-result
+#            - AddResponseHeader=first-response, first-response-result
+            - CustomFilter
         - id: second-service
           uri: http://localhost:8082/ # 포워딩 주소
           predicates:
             - Path=/second-service/**
           filters:
-            - AddRequestHeader=second-request, second-request-result
-            - AddResponseHeader=second-response, second-response-result
+#            - AddRequestHeader=second-request, second-request-result
+#            - AddResponseHeader=second-response, second-response-result
+            - CustomFilter
