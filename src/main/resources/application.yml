@@ -20,26 +20,30 @@ spring:
             preLogger: true
             postLogger: true
       routes:
-        - id: first-service
-#          uri: http://localhost:8081/ # 포워딩 주소
-          uri: lb://FIRST-SERVICE # eureka에 등록된 이름으로 연결
+        - id: user-service
+          uri: lb://USER-SERVICE
           predicates:
-            - Path=/first-service/**
-          filters:
-#            - AddRequestHeader=first-request, first-request-result
-#            - AddResponseHeader=first-response, first-response-result
-            - CustomFilter
-        - id: second-service
-#          uri: http://localhost:8082/ # 포워딩 주소
-          uri: lb://SECOND-SERVICE # eureka에 등록된 이름으로 연결
-          predicates:
-            - Path=/second-service/**
-          filters:
-#            - AddRequestHeader=second-request, second-request-result
-#            - AddResponseHeader=second-response, second-response-result
-            - name: CustomFilter
-            - name: LoggingFilter
-              args:
-                message: This is LoggingFilter
-                preLogger: true
-                postLogger: true
+            - Path=/user-service/**
+#        - id: first-service
+##          uri: http://localhost:8081/ # 포워딩 주소
+#          uri: lb://FIRST-SERVICE # eureka에 등록된 이름으로 연결
+#          predicates:
+#            - Path=/first-service/**
+#          filters:
+##            - AddRequestHeader=first-request, first-request-result
+##            - AddResponseHeader=first-response, first-response-result
+#            - CustomFilter
+#        - id: second-service
+##          uri: http://localhost:8082/ # 포워딩 주소
+#          uri: lb://SECOND-SERVICE # eureka에 등록된 이름으로 연결
+#          predicates:
+#            - Path=/second-service/**
+#          filters:
+##            - AddRequestHeader=second-request, second-request-result
+##            - AddResponseHeader=second-response, second-response-result
+#            - name: CustomFilter
+#            - name: LoggingFilter
+#              args:
+#                message: This is LoggingFilter
+#                preLogger: true
+#                postLogger: true
