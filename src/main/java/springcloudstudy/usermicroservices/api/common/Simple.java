@@ -1,4 +1,4 @@
-package springcloudstudy.usermicroservices.api.user.common;
+package springcloudstudy.usermicroservices.api.common;
 
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Value;
