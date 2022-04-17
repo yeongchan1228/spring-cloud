@@ -6,9 +6,9 @@ import springcloudstudy.usermicroservices.domain.user.entity.User;
 import java.util.Optional;
 
 public interface UserRepository extends JpaRepository<User, Long> {
-    User findByUsername(String getName);
+    Optional<User> findByUsername(String getName);
 
-    User findByEmail(String getEmail);
+    Optional<User> findByEmail(String getEmail);
 
     Optional<User> findByUserId(String userId);
 }
