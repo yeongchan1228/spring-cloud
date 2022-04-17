@@ -24,7 +24,7 @@ import java.util.List;
 @Slf4j
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/user-service") // 나중에 eureka 등록 시 변경
+//@RequestMapping("/user-service") // 나중에 eureka 등록 시 변경 routing 정보 변경에 의해 주석 처리
 public class UserController {
 
     private final Environment env;
