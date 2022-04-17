@@ -26,29 +26,14 @@ public class LoginServiceImpl implements LoginService{
         String getName = userDto.getName();
         String getEmail = userDto.getEmail();
 
-        ErrorDto errorDto = new ErrorDto();
-        errorDto.setMessage("Unique Error!");
-        checkDuplicate(getName, getEmail, errorDto);
-        if(errorDto.getErrors().size() != 0){
-            return errorDto;
-        }
-
         User user = User.createUser()
                 .userId(uuid)
                 .email(getEmail)
                 .encryptedPwd(encoder.encode(userDto.getPwd()))
                 .username(getName)
                 .build();
+
         userRepository.save(user);
         return user;
-    }
-
-    private void checkDuplicate(String getName, String getEmail, ErrorDto errorDto) {
-        if(userRepository.findByUsername(getName) != null){
-            errorDto.getErrors().add(new ErrorDetailDto("Name", "Name already used"));
-        }
-        if(userRepository.findByEmail(getEmail) != null){
-            errorDto.getErrors().add(new ErrorDetailDto("Email", "Email already used"));
-        }
     }
 }
