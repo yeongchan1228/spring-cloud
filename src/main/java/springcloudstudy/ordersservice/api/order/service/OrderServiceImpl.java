@@ -19,7 +19,7 @@ public class OrderServiceImpl implements OrderService{
 
     @Override
     @Transactional
-    public OrderDto createOrder(OrderDto orderDto) {
+    public Order createOrder(OrderDto orderDto) {
         String orderUUID = UUID.randomUUID().toString();
 
         Order createOrder = Order.createOrder()
@@ -31,15 +31,12 @@ public class OrderServiceImpl implements OrderService{
                 .userId(orderDto.getUserId())
                 .build();
 
-        orderRepository.save(createOrder);
-
-        return new ModelMapper().map(createOrder, OrderDto.class);
+        return orderRepository.save(createOrder);
     }
 
     @Override
-    public OrderDto getOrderByOrderId(String orderId) {
-        Order findOrder = orderRepository.findByOrderId(orderId);
-        return new ModelMapper().map(findOrder, OrderDto.class);
+    public Order getOrderByOrderId(String orderId) {
+        return orderRepository.findByOrderId(orderId);
     }
 
     @Override
