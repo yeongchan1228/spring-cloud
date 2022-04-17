@@ -41,7 +41,7 @@ public class Order implements Serializable {
     private String orderId;
 
     @CreatedDate
-    @Column(updatable = false, insertable = false)
+    @Column(updatable = false)
     private LocalDate createdDate;
 
     @Builder(builderMethodName = "createOrder")
