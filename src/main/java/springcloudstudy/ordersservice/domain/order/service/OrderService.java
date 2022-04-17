@@ -1,4 +1,4 @@
-package springcloudstudy.ordersservice.api.order.service;
+package springcloudstudy.ordersservice.domain.order.service;
 
 import springcloudstudy.ordersservice.api.order.controller.dto.OrderDto;
 import springcloudstudy.ordersservice.domain.order.entity.Order;

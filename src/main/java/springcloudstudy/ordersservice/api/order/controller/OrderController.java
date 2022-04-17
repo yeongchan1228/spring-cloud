@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import springcloudstudy.ordersservice.api.order.controller.dto.OrderDto;
 import springcloudstudy.ordersservice.api.order.controller.dto.RequestOrderDto;
 import springcloudstudy.ordersservice.api.order.controller.dto.ResponseOrderDto;
-import springcloudstudy.ordersservice.api.order.service.OrderService;
+import springcloudstudy.ordersservice.domain.order.service.OrderService;
 import springcloudstudy.ordersservice.domain.order.entity.Order;
 
 import java.util.ArrayList;
