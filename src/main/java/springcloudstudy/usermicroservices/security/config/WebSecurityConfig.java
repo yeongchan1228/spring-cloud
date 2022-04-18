@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import springcloudstudy.usermicroservices.domain.user.service.AuthUserService;
+import springcloudstudy.usermicroservices.domain.user.service.UserService;
 import springcloudstudy.usermicroservices.security.filter.AuthenticationFilter;
 
 @Configuration
@@ -16,6 +17,7 @@ import springcloudstudy.usermicroservices.security.filter.AuthenticationFilter;
 @RequiredArgsConstructor
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
+    private final UserService userService;
     private final AuthUserService authUserService;
     private final BCryptPasswordEncoder passwordEncoder;
     private final Environment env;
@@ -27,7 +29,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //        http.authorizeRequests().antMatchers("/user/**").permitAll();
 
         http.authorizeRequests().antMatchers("/**")
-                .hasIpAddress("10.14.4.223")
+                .hasIpAddress("192.168.0.55")
                 .and()
                 .addFilter(getAuthenticationFilter());
 //                .hasIpAddress(IP 값);// 통과 IP 지정 가능
@@ -46,9 +48,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     private AuthenticationFilter getAuthenticationFilter() throws Exception {
-        AuthenticationFilter authenticationFilter = new AuthenticationFilter();
-        authenticationFilter.setAuthenticationManager(authenticationManager());
-
+        AuthenticationFilter authenticationFilter = new AuthenticationFilter(authenticationManager(), userService, env);
         return authenticationFilter;
     }
 
