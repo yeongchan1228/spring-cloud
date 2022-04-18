@@ -34,3 +34,14 @@ eureka:
 
 simple:
   message: Simple E-commerce.
+
+logging:
+  level:
+    springcloudstudy:
+      usermicroservices: debug
+
+# expridationTime = 60(초) * 60(분) * 24 * 10000 -> 하루 milliSec
+# secret = 32글자 이상
+token:
+  expirationTime: 86400000
+  secret: Imstudyingspringcloudjwtissomuchfun
