@@ -1,0 +1,17 @@
+server:
+  port: 8087
+---
+
+spring:
+  application:
+    name: configtest-dev
+  config:
+    import: optional:configserver:http://localhost:9090
+
+---
+# Actuator 설정 // 깃 설정 정보 변경 시 변경 적용
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh
