@@ -1,0 +1,11 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: file:///Users/yc/study/back/code/spring-cloud/git-local-config # local .yml 사용, git commit 상태
