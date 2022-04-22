@@ -1,0 +1,85 @@
+server:
+  port: 8000
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+spring:
+  application:
+    name: apigateway-service
+  cloud:
+    gateway:
+      default-filters:
+        - name: GlobalFilter
+          args:
+            message: Hello, GlobalFilter
+            preLogger: true
+            postLogger: true
+      routes:
+#        - id: user-service
+#          uri: lb://USER-SERVICE
+#          predicates:
+#            - Path=/user-service/**
+        - id: user-service
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/user-service/login
+            - Method=POST
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/user-service/(?<segment>.*), /$\{segment}
+        - id: user-service
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/user-service/users
+            - Method=POST
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/user-service/(?<segment>.*), /$\{segment}
+        - id: user-service
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/user-service/**
+            - Method=GET
+          filters:
+            - RemoveRequestHeader=Cookie
+            - AuthorizationHeaderFilter
+            - RewritePath=/user-service/(?<segment>.*), /$\{segment}
+        - id: catalog-service
+          uri: lb://CATALOG-SERVICE
+          predicates:
+            - Path=/catalog-service/**
+        - id: order-service
+          uri: lb://ORDER-SERVICE
+          predicates:
+            - Path=/order-service/**
+#        - id: first-service
+##          uri: http://localhost:8081/ # 포워딩 주소
+#          uri: lb://FIRST-SERVICE # eureka에 등록된 이름으로 연결
+#          predicates:
+#            - Path=/first-service/**
+#          filters:
+##            - AddRequestHeader=first-request, first-request-result
+##            - AddResponseHeader=first-response, first-response-result
+#            - CustomFilter
+#        - id: second-service
+##          uri: http://localhost:8082/ # 포워딩 주소
+#          uri: lb://SECOND-SERVICE # eureka에 등록된 이름으로 연결
+#          predicates:
+#            - Path=/second-service/**
+#          filters:
+##            - AddRequestHeader=second-request, second-request-result
+##            - AddResponseHeader=second-response, second-response-result
+#            - name: CustomFilter
+#            - name: LoggingFilter
+#              args:
+#                message: This is LoggingFilter
+#                preLogger: true
+#                postLogger: true
+
+token:
+  secret: Imstudyingspringcloudjwtissomuchfun
