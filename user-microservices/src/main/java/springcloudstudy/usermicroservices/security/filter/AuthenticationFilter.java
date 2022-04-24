@@ -92,7 +92,7 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
         key = Keys.hmacShaKeyFor(keyBytes);
         String token = Jwts.builder()
                 .setSubject(userId)
-                .setExpiration(new Date(System.currentTimeMillis() + Long.parseLong(env.getProperty("token.expirationTime"))))
+                .setExpiration(new Date(System.currentTimeMillis() + Long.parseLong(env.getProperty("token.expiration_time"))))
                 .signWith(key, SignatureAlgorithm.HS256)
                 .compact();
 
