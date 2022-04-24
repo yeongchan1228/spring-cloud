@@ -28,8 +28,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 //        http.authorizeRequests().antMatchers("/user/**").permitAll();
 
-        http.authorizeRequests().antMatchers("/**")
-                .hasIpAddress("192.168.0.55")
+        http.authorizeRequests()
+                .antMatchers("/actuator/**").permitAll()
+                .antMatchers("/**")
+                .hasIpAddress("192.168.0.8")
                 .and()
                 .addFilter(getAuthenticationFilter());
 //                .hasIpAddress(IP 값);// 통과 IP 지정 가능
