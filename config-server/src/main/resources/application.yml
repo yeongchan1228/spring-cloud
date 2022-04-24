@@ -8,4 +8,8 @@ spring:
     config:
       server:
         git:
-          uri: file:///Users/yc/study/back/code/spring-cloud/git-local-config # local .yml 사용, git commit 상태
+#          uri: file:///Users/yc/study/back/code/spring-cloud/git-local-config # local .yml 사용, git commit 상태
+          uri: https://github.com/yeongchan1228/spring-cloud.git
+#          private repository 시
+#          username: ~~~~ # git
+#          password: ~~~~ # git
