@@ -9,14 +9,20 @@ eureka:
       defaultZone: http://localhost:8761/eureka
 
 spring:
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
   application:
     name: apigateway-service
   config: # spring config server import
     import: optional:configserver:http://localhost:8888
+  profiles:
+    active: dev
   cloud:
     config:
-      name: ecommerce
-      profile: dev
+      name: myconfig
     gateway:
       default-filters:
         - name: GlobalFilter
@@ -45,20 +51,21 @@ spring:
         - id: user-service
           uri: lb://USER-SERVICE
           predicates:
+            - Path=/user-service/actuator/**
+            - Method=GET, POST
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/user-service/(?<segment>.*), /$\{segment}
+        - id: user-service
+          uri: lb://USER-SERVICE
+          predicates:
             - Path=/user-service/**
             - Method=GET
           filters:
             - RemoveRequestHeader=Cookie
             - AuthorizationHeaderFilter
             - RewritePath=/user-service/(?<segment>.*), /$\{segment}
-        - id: user-service
-          uri: lb://USER-SERVICE
-          predicates:
-            - Path=/user-service/actuator/**
-            - Method=GET, POST
-          filters:
-            - RemoveRequestHeader=Cookie
-            - RewritePath=/user-service/(?<segment>.*), /$\{segment}
+
 ########### catalog-service routing
         - id: catalog-service
           uri: lb://CATALOG-SERVICE
@@ -78,8 +85,7 @@ management:
   endpoints:
     web:
       exposure:
-        include:
-          - refresh
-          - health
-          - beans
-          - httptrace
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS

@@ -2,6 +2,12 @@ server:
   port: 8888
 
 spring:
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
   application:
     name: config-server
   cloud:
@@ -13,3 +19,12 @@ spring:
 #          private repository 시
 #          username: ~~~~ # git
 #          password: ~~~~ # git
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS

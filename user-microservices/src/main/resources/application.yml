@@ -2,6 +2,11 @@ server:
   port: 0
 
 spring:
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
   h2:
     console:
       enabled: true
@@ -17,20 +22,21 @@ spring:
     driver-class-name: org.h2.Driver
   config: # spring config server import
     import: optional:configserver:http://localhost:8888
+  profiles:
+    active: dev
   cloud: # config server .yml 이름 지정
     config:
-      name: ecommerce
-      profile: dev
+      name: myconfig
 
 # Actuator 등록
 management:
   endpoints:
     web:
       exposure:
-        include:
-          - refresh
-          - health
-          - beans
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
 
   jpa:
     hibernate:
