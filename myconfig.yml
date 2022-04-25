@@ -15,7 +15,7 @@ spring:
 
 token:
   expiration_time:  86400000
-  secret: Imstudyingspringcloudjwtissomuchfun_Dev_Changed#4
+  secret: '{cipher}45ac3a6d58ee2484b3c7a498b17ed933c8a431f6e7751b7937b7ce72b76f3d371a1a0f63786c2c8de038afc86f4c2b79bb0c3c3d065f0cbd1a26afcc184606c8f8112dd3b9c9b7867384900dd18e2a65'
 
 gateway:
   ip: 192.168.0.8
