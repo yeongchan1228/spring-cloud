@@ -3,7 +3,7 @@ spring:
 
 token:
   expiration_time:  86400000
-  secret: Imstudyingspringcloudjwtissomuchfun
+  secret: '{ciper}AQBVKG47WuCSWYQhVrJ2tkWRWJshgJtjYtVmJylmrLVDJVzves/3hkMtD/aDhz1Qs/k9iIzinrohX7s5+2I3FLjCUhYdt8GamaLSyeAbZLzpciRhcbCf91e4craZgeXSEt6DtOXAA20FYTNPRn8If9moHTg4bDUO4leJbuhlP9ZyKwevhHmb+5yr4CuN3mwV8uVOco2pgC5D1pgH9x0QU3MrtQsXWC4Bwsje7XO38d4J1LrNIgSQS0PPPaiIUXuwAiXRO7IB+I8IWu/4PKWHutnMy2tiQMY3utGhprjbV8DNIT3zny0eQm5Ay0/os9PYqMyYmW3qlZjcV4MYRHH8F6rALIvYqyfWLaTEdMHA7seCfXOtmdECCx8QMNC8g2njkKvDFcTKor4yncyrOAWzfBWrpihjdmwADoOUSS7jzOvxJQ=='
 
 gateway:
   ip: 192.168.0.8
@@ -27,7 +27,7 @@ spring:
 
 token:
   expiration_time:  86400000
-  secret: Imstudyingspringcloudjwtissomuchfun_Prod
+  secret: '{ciper}AQAJMY7nGNYDSB6oZV7ZvE8y0I8TT9G49as5Lnin3y9JEXkQjT/6TyJxtz7Hu8mJN8evBYzSpcwTs6G1giaLlI7wKFKmPoOsnl7gdM/TdYfLrdui97FjnUrPfBQrqQT5a2n65bwGWmD1D1ZJSfzZ4wNpXP6qXloAv56T0YztC2KPs11yTndWNwgFrPCdg0kUhcnXS3zkNWd1m05Nf/4csGBLfYx1adB7Skyp6M1sxePmivpmmpjMimjeCowbJ8m0+qSs3GPTG9HTJbWCNGvOpFUQlrWdhDMPHQUSelxKuvaQD1yBoaN816pGq42X0F+qC7W7FJPY6NPQeDcS5GLSD3mlbZlfKXU7Nm5MyqjkBRqEspYjDC0Jwie82iCh70qFFniq/ErZh2LzmV2Sgq+OGv74zX3GScqWhLv8RziClncSZA=='
 
 gateway:
   ip: 192.168.0.8
