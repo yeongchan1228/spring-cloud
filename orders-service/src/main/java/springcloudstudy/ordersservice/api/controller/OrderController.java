@@ -18,7 +18,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("order-service")
+//@RequestMapping("order-service")
 public class OrderController {
 
     private final OrderService orderService;
@@ -29,7 +29,7 @@ public class OrderController {
         return String.format("Working!!! port = %s", env.getProperty("local.server.port"));
     }
 
-    @GetMapping("/{userId}/orders")
+    @GetMapping("/orders/{userId}")
     public ResponseEntity<List<ResponseOrderDto>> getOrdersByUserId(@PathVariable String userId){
         Iterable<Order> orders = orderService.getOrdersByUserId(userId);
         List<ResponseOrderDto> list = new ArrayList<>();
@@ -39,7 +39,7 @@ public class OrderController {
         return ResponseEntity.status(200).body(list);
     }
 
-    @PostMapping("/{userId}/orders")
+    @PostMapping("/orders/{userId}")
     public ResponseEntity<ResponseOrderDto> saveOrder(@PathVariable String userId,
                                                       @RequestBody RequestOrderDto requestOrderDto){
         ModelMapper modelMapper = new ModelMapper();
