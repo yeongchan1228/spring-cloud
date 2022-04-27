@@ -30,8 +30,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.authorizeRequests()
                 .antMatchers("/actuator/**").permitAll()
-                .antMatchers("/**")
-                .hasIpAddress("127.0.0.1")
+                .antMatchers("/join").permitAll()
+//                .antMatchers("/users/**").authenticated()
                 .and()
                 .addFilter(getAuthenticationFilter());
 //                .hasIpAddress(IP 값);// 통과 IP 지정 가능
