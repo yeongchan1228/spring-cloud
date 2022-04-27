@@ -57,7 +57,7 @@ public class UserController {
         return simple.getMessage();
     }
 
-    @PostMapping("/users")
+    @PostMapping("/join")
     public ResponseEntity<Object> createUser(@Validated @RequestBody UserDto userDto){
         Object result = loginService.createUser(userDto);
         HttpStatus httpStatus = HttpStatus.CREATED;
