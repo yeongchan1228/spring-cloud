@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import springcloudstudy.usermicroservices.api.service.dto.ResponseOrderDto;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +18,7 @@ public class ResponseUserDto {
     private String username;
     private String userId;
 
-    private List<ResponseOrder> orders = new ArrayList<>();
+    private List<ResponseOrderDto> orders = new ArrayList<>();
 
     public ResponseUserDto(String email, String name, String userId) {
         this.email = email;
