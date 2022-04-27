@@ -43,7 +43,7 @@ spring:
         - id: user-service
           uri: lb://USER-SERVICE
           predicates:
-            - Path=/user-service/users
+            - Path=/user-service/join
             - Method=POST
           filters:
             - RemoveRequestHeader=Cookie
@@ -76,6 +76,9 @@ spring:
           uri: lb://ORDER-SERVICE
           predicates:
             - Path=/order-service/**
+            - Method=GET, POST
+          filters:
+            - RewritePath=/order-service/(?<segment>.*), /$\{segment}
 
 #token:
 #  secret: Imstudyingspringcloudjwtissomuchfun
