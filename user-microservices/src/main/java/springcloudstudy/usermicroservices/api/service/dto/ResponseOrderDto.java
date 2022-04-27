@@ -1,7 +1,7 @@
-package springcloudstudy.usermicroservices.api.controller.dto;
+package springcloudstudy.usermicroservices.api.service.dto;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -9,15 +9,13 @@ import javax.persistence.EntityListeners;
 import java.time.LocalDate;
 
 @Data
-@AllArgsConstructor
+@NoArgsConstructor // restTemplate에서 필요
 @EntityListeners(value = AuditingEntityListener.class)
-public class ResponseOrder {
+public class ResponseOrderDto {
     private String productId;
-    private Integer quantity;
+    private Integer qty;
     private Integer unitPrice;
     private Integer totalPrice;
-
-    @CreatedDate
-    private LocalDate createDate;
+    private LocalDate createdDate;
     private String orderId;
 }
