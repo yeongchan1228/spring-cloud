@@ -1,4 +1,4 @@
-package springcloudstudy.usermicroservices.api.user.controller;
+package springcloudstudy.usermicroservices.api.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -12,8 +12,8 @@ import springcloudstudy.usermicroservices.api.common.Simple;
 import springcloudstudy.usermicroservices.api.exception.dto.ErrorDetailDto;
 import springcloudstudy.usermicroservices.api.exception.dto.ErrorDto;
 import springcloudstudy.usermicroservices.api.exception.user.NotFoundUserException;
-import springcloudstudy.usermicroservices.api.user.controller.dto.ResponseUserDto;
-import springcloudstudy.usermicroservices.api.user.controller.dto.UserDto;
+import springcloudstudy.usermicroservices.api.controller.dto.ResponseUserDto;
+import springcloudstudy.usermicroservices.api.controller.dto.UserDto;
 import springcloudstudy.usermicroservices.domain.user.entity.User;
 import springcloudstudy.usermicroservices.domain.user.service.LoginService;
 import springcloudstudy.usermicroservices.domain.user.service.UserService;
@@ -87,6 +87,8 @@ public class UserController {
     public ResponseEntity getUserId(@PathVariable String userId){
         User findUser = userService.getUserByUserId(userId);
         ResponseUserDto responseUserDto = new ModelMapper().map(findUser, ResponseUserDto.class);
+
+
 
         return ResponseEntity.status(HttpStatus.OK).body(responseUserDto);
     }

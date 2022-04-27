@@ -3,11 +3,8 @@ package springcloudstudy.usermicroservices.security.filter;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -16,7 +13,7 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import springcloudstudy.usermicroservices.api.exception.user.NotFoundUserException;
-import springcloudstudy.usermicroservices.api.user.controller.dto.RequestLoginDto;
+import springcloudstudy.usermicroservices.api.controller.dto.RequestLoginDto;
 import springcloudstudy.usermicroservices.domain.user.service.UserService;
 
 import javax.servlet.FilterChain;
@@ -27,7 +24,6 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.security.Key;
 import java.util.ArrayList;
-import java.util.Base64;
 import java.util.Date;
 
 /**

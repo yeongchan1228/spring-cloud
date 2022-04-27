@@ -1,4 +1,4 @@
-package springcloudstudy.usermicroservices.api.user.controller.dto;
+package springcloudstudy.usermicroservices.api.controller.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -4,9 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import springcloudstudy.usermicroservices.api.exception.dto.ErrorDetailDto;
-import springcloudstudy.usermicroservices.api.exception.dto.ErrorDto;
-import springcloudstudy.usermicroservices.api.user.controller.dto.UserDto;
+import springcloudstudy.usermicroservices.api.controller.dto.UserDto;
 import springcloudstudy.usermicroservices.domain.user.entity.User;
 import springcloudstudy.usermicroservices.domain.user.repository.UserRepository;
 
