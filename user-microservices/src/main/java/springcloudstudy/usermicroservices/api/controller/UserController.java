@@ -16,7 +16,7 @@ import springcloudstudy.usermicroservices.api.controller.dto.ResponseUserDto;
 import springcloudstudy.usermicroservices.api.controller.dto.UserDto;
 import springcloudstudy.usermicroservices.api.service.UserOrderService;
 import springcloudstudy.usermicroservices.domain.user.entity.User;
-import springcloudstudy.usermicroservices.domain.user.service.LoginService;
+import springcloudstudy.usermicroservices.api.service.LoginService;
 import springcloudstudy.usermicroservices.domain.user.service.UserService;
 
 import java.util.ArrayList;

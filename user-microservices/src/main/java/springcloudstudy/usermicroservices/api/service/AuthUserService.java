@@ -1,4 +1,4 @@
-package springcloudstudy.usermicroservices.domain.user.service;
+package springcloudstudy.usermicroservices.api.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;

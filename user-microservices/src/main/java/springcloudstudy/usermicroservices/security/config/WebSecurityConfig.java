@@ -8,7 +8,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import springcloudstudy.usermicroservices.domain.user.service.AuthUserService;
+import springcloudstudy.usermicroservices.api.service.AuthUserService;
 import springcloudstudy.usermicroservices.domain.user.service.UserService;
 import springcloudstudy.usermicroservices.security.filter.AuthenticationFilter;
 

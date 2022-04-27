@@ -1,4 +1,4 @@
-package springcloudstudy.usermicroservices.domain.user.service;
+package springcloudstudy.usermicroservices.api.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -13,7 +13,7 @@ import java.util.UUID;
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
-public class LoginServiceImpl implements LoginService{
+public class LoginServiceImpl implements LoginService {
 
     private final UserRepository userRepository;
     private final BCryptPasswordEncoder encoder;
