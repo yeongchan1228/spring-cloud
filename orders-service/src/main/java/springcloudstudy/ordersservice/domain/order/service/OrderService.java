@@ -1,6 +1,6 @@
 package springcloudstudy.ordersservice.domain.order.service;
 
-import springcloudstudy.ordersservice.api.order.controller.dto.OrderDto;
+import springcloudstudy.ordersservice.api.controller.dto.OrderDto;
 import springcloudstudy.ordersservice.domain.order.entity.Order;
 
 public interface OrderService {

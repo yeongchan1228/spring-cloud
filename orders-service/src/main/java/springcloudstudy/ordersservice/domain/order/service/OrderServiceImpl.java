@@ -3,7 +3,7 @@ package springcloudstudy.ordersservice.domain.order.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import springcloudstudy.ordersservice.api.order.controller.dto.OrderDto;
+import springcloudstudy.ordersservice.api.controller.dto.OrderDto;
 import springcloudstudy.ordersservice.domain.order.entity.Order;
 import springcloudstudy.ordersservice.domain.order.repository.OrderRepository;
 

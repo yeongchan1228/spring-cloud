@@ -1,4 +1,4 @@
-package springcloudstudy.ordersservice.api.order.controller;
+package springcloudstudy.ordersservice.api.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -7,9 +7,9 @@ import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import springcloudstudy.ordersservice.api.order.controller.dto.OrderDto;
-import springcloudstudy.ordersservice.api.order.controller.dto.RequestOrderDto;
-import springcloudstudy.ordersservice.api.order.controller.dto.ResponseOrderDto;
+import springcloudstudy.ordersservice.api.controller.dto.OrderDto;
+import springcloudstudy.ordersservice.api.controller.dto.RequestOrderDto;
+import springcloudstudy.ordersservice.api.controller.dto.ResponseOrderDto;
 import springcloudstudy.ordersservice.domain.order.service.OrderService;
 import springcloudstudy.ordersservice.domain.order.entity.Order;
 

@@ -1,4 +1,4 @@
-package springcloudstudy.ordersservice.api.order.controller.dto;
+package springcloudstudy.ordersservice.api.controller.dto;
 
 import lombok.Data;
 

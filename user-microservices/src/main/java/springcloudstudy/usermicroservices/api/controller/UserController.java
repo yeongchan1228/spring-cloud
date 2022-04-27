@@ -14,6 +14,7 @@ import springcloudstudy.usermicroservices.api.exception.dto.ErrorDto;
 import springcloudstudy.usermicroservices.api.exception.user.NotFoundUserException;
 import springcloudstudy.usermicroservices.api.controller.dto.ResponseUserDto;
 import springcloudstudy.usermicroservices.api.controller.dto.UserDto;
+import springcloudstudy.usermicroservices.api.service.UserOrderService;
 import springcloudstudy.usermicroservices.domain.user.entity.User;
 import springcloudstudy.usermicroservices.domain.user.service.LoginService;
 import springcloudstudy.usermicroservices.domain.user.service.UserService;
@@ -31,6 +32,7 @@ public class UserController {
     private final Simple simple;
     private final LoginService loginService;
     private final UserService userService;
+    private final UserOrderService userOrderService;
 
     @ExceptionHandler
     @ResponseStatus(HttpStatus.BAD_REQUEST)
@@ -88,8 +90,8 @@ public class UserController {
         User findUser = userService.getUserByUserId(userId);
         ResponseUserDto responseUserDto = new ModelMapper().map(findUser, ResponseUserDto.class);
 
+        ResponseUserDto result = userOrderService.getOrders(responseUserDto);
 
-
-        return ResponseEntity.status(HttpStatus.OK).body(responseUserDto);
+        return ResponseEntity.status(HttpStatus.OK).body(result);
     }
 }
