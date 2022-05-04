@@ -60,4 +60,6 @@ simple:
 logging:
   level:
     springcloudstudy:
-      usermicroservices: debug
+      usermicroservices:
+        api:
+          feign: debug
