@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.core.env.Environment;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +14,7 @@ import springcloudstudy.ordersservice.api.controller.dto.ResponseOrderDto;
 import springcloudstudy.ordersservice.domain.order.service.OrderService;
 import springcloudstudy.ordersservice.domain.order.entity.Order;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,7 +32,12 @@ public class OrderController {
     }
 
     @GetMapping("/orders/{userId}")
-    public ResponseEntity<List<ResponseOrderDto>> getOrdersByUserId(@PathVariable String userId){
+    public ResponseEntity<List<ResponseOrderDto>> getOrdersByUserId(
+            @PathVariable String userId,
+            HttpServletRequest request
+    ){
+        String token = request.getHeader(HttpHeaders.AUTHORIZATION);
+        System.out.println("token = " + token);
         Iterable<Order> orders = orderService.getOrdersByUserId(userId);
         List<ResponseOrderDto> list = new ArrayList<>();
         orders.forEach(order -> {

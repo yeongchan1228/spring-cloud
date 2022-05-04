@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.core.env.Environment;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -19,6 +20,7 @@ import springcloudstudy.usermicroservices.domain.user.entity.User;
 import springcloudstudy.usermicroservices.api.service.LoginService;
 import springcloudstudy.usermicroservices.domain.user.service.UserService;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -86,12 +88,14 @@ public class UserController {
     }
 
     @GetMapping("/users/{userId}")
-    public ResponseEntity getUserId(@PathVariable String userId){
+    public ResponseEntity getUserId(@PathVariable String userId, HttpServletRequest request){
         User findUser = userService.getUserByUserId(userId);
         ResponseUserDto responseUserDto = new ModelMapper().map(findUser, ResponseUserDto.class);
 
-        ResponseUserDto result = userOrderService.getOrders(responseUserDto);
+        String token = request.getHeader(HttpHeaders.AUTHORIZATION);
+        // jwt 토큰도 같이 보내기 위해
+        ResponseUserDto result = userOrderService.getOrders(responseUserDto, token);
 
-        return ResponseEntity.status(HttpStatus.OK).body(result);
+        return ResponseEntity.status(HttpStatus.      OK).body(result);
     }
 }
