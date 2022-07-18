@@ -37,6 +37,10 @@ public class Catalog implements Serializable {
     @Column(updatable = false)
     private LocalDate createdDate;
 
+    public void changeStock(int stock) {
+        this.stock = stock;
+    }
+
     @Builder(builderMethodName = "creatCatalog")
     public Catalog(String productId, String productName, Integer stock, Integer unitPrice) {
         this.productId = productId;
@@ -44,6 +48,7 @@ public class Catalog implements Serializable {
         this.stock = stock;
         this.unitPrice = unitPrice;
     }
+
     @Builder(builderMethodName = "creatTestCatalog")
     public Catalog(String productId, String productName, Integer stock, Integer unitPrice, LocalDate createdDate) {
         this.productId = productId;
