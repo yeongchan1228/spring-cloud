@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import springcloudstudy.ordersservice.api.controller.dto.OrderDto;
 import springcloudstudy.ordersservice.api.controller.dto.RequestOrderDto;
 import springcloudstudy.ordersservice.api.controller.dto.ResponseOrderDto;
+import springcloudstudy.ordersservice.domain.order.repository.kafka.KafkaProducer;
 import springcloudstudy.ordersservice.domain.order.service.OrderService;
 import springcloudstudy.ordersservice.domain.order.entity.Order;
 
@@ -23,8 +24,9 @@ import java.util.List;
 //@RequestMapping("order-service")
 public class OrderController {
 
-    private final OrderService orderService;
     private final Environment env;
+    private final OrderService orderService;
+    private final KafkaProducer kafkaProducer;
 
     @GetMapping("/health-check")
     public String healthCheck(){
@@ -34,10 +36,8 @@ public class OrderController {
     @GetMapping("/orders/{userId}")
     public ResponseEntity<List<ResponseOrderDto>> getOrdersByUserId(
             @PathVariable String userId,
-            HttpServletRequest request
-    ){
+            HttpServletRequest request){
         String token = request.getHeader(HttpHeaders.AUTHORIZATION);
-        System.out.println("token = " + token);
         Iterable<Order> orders = orderService.getOrdersByUserId(userId);
         List<ResponseOrderDto> list = new ArrayList<>();
         orders.forEach(order -> {
@@ -55,6 +55,9 @@ public class OrderController {
         orderDto.setUserId(userId);
 
         Order createOrder = orderService.createOrder(orderDto);
+
+        kafkaProducer.send("example-catalog-topic", orderDto);
+
         return ResponseEntity.status(HttpStatus.OK).body(modelMapper.map(createOrder, ResponseOrderDto.class));
     }
 }
