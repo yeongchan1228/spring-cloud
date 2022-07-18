@@ -27,7 +27,11 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
 	implementation group: 'org.modelmapper', name: 'modelmapper', version: '2.3.6'
-	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client:2.7.4'
+	implementation 'org.springframework.kafka:spring-kafka'
+
+	// MariaDB 추가
+	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client:2.7.2'
+
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	runtimeOnly 'com.h2database:h2'
