@@ -21,6 +21,13 @@ spring:
       ddl-auto: create
     show-sql: true
 
+  kafka:
+    consumer: # consumer 설정
+      group-id: comsumerGroupId # consumer grouping
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      bootstrap-servers: localhost:9092
+
 eureka:
   client:
     fetch-registry: true
